@@ -1,0 +1,13 @@
+join-quit-message:
+  enabled: true
+  join-message: "%player_name% a rejoind"
+  leave-message: "%player_name% a quitté"
+
+chat-message:
+  enabled: true
+  player-chat: "%vault_prefix% %player_name% > %message%"
+
+worlds:
+  - world
+  - world_nether
+  - world_the_end

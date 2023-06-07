@@ -1,0 +1,5 @@
+name: foxlobby
+version: 1.0.0
+author: achul123
+main: io.achul123.Main
+commands:
