@@ -1,5 +1,6 @@
 package io.achul123;
 
+import io.achul123.Commands.Admin.*;
 import io.achul123.Events.Listeners;
 import io.achul123.Utils.Utilities;
 import org.bukkit.Bukkit;
@@ -15,9 +16,10 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Utilities.defaultConfigSave();
+        getCommand("gm").setExecutor(new CommandGM());
+        getCommand("fly").setExecutor(new CommandFLY());
         Bukkit.getPluginManager().registerEvents(new Listeners(), this);
         loadWorlds();
-
     }
 
     @Override

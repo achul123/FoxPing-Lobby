@@ -4,6 +4,7 @@ import io.achul123.Utils.Utilities;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -11,15 +12,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import static io.achul123.Main.worlds;
 
-public class Listeners implements Listener {
 
+public class Listeners implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void hungerChangeEvent(FoodLevelChangeEvent event) {
@@ -87,7 +90,31 @@ public class Listeners implements Listener {
     }
 
     @EventHandler
-    public void onPlayerBreak(BlockBreakEvent event){
-        event.setCancelled(true);
+    public void onPlayerBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.hasPermission("fp.break")) {
+        } else {
+            event.setCancelled(true);
+            player.sendMessage("Vous n'avez pas la permission de casser des blocs.");
+        }
+    }
+
+    @EventHandler
+    public void onPlayerPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.hasPermission("fp.place")) {
+        } else {
+            event.setCancelled(true);
+            player.sendMessage("Vous n'avez pas la permission de poser des blocs.");
+        }
+    }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event) {
+        if (event.getTo().getBlock().getType() == Material.CROPS) {
+            event.setCancelled(true);
+        }
     }
 }
