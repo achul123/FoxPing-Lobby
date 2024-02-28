@@ -50,7 +50,7 @@ public class Listeners implements Listener {
             event.setJoinMessage(message);
             Player player = event.getPlayer();
             // spawn
-            Location spawnLocation = new Location(player.getWorld(), -9.650, 32, -136.420, 90.0f, -1.0f );
+            Location spawnLocation = new Location(player.getWorld(), -236.509, 11, -269.438, 180.0f, -1.5f );
             player.teleport(spawnLocation);
             // clear inventory
             player.getInventory().clear();
@@ -79,7 +79,7 @@ public class Listeners implements Listener {
         if (chatFormatEnabled) {
             String tosend = config.getString("chat-message.player-chat");
             if (tosend == null) {
-                Bukkit.getLogger().severe("No chat message was set in the config !!!!!!! DumbASS");
+                Bukkit.getLogger().severe("No chat message was set in the config !");
                 return;
             }
             tosend = PlaceholderAPI.setPlaceholders(event.getPlayer(), tosend);

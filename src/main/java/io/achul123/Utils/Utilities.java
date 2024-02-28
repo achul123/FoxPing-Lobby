@@ -17,12 +17,12 @@ public final class Utilities {
     public static YamlConfiguration config = new YamlConfiguration();
     public static void defaultConfigSave() {
         try {
-            FileInputStream config = new FileInputStream("plugins/InstantPlugin/config.yml");
+            FileInputStream config = new FileInputStream("plugins/FoxLobby/config.yml");
             config.close();
         } catch (FileNotFoundException e) {
             try {
-                Files.createDirectories(Paths.get("plugins/InstantPlugin"));
-                FileOutputStream config = new FileOutputStream("plugins/InstantPlugin/config.yml");
+                Files.createDirectories(Paths.get("plugins/FoxLobby"));
+                FileOutputStream config = new FileOutputStream("plugins/FoxLobby/config.yml");
                 InputStream default_config = Utilities.class.getClassLoader().getResourceAsStream("config.yml");
                 byte[] buffer = new byte[default_config.available()];;
                 default_config.read(buffer);
@@ -47,7 +47,7 @@ public final class Utilities {
 
     public static void loadConfig() {
         try {
-            config.load(new InputStreamReader(Files.newInputStream(Paths.get("plugins/InstantPlugin/config.yml")), Charsets.UTF_8));
+            config.load(new InputStreamReader(Files.newInputStream(Paths.get("plugins/FoxLobby/config.yml")), Charsets.UTF_8));
         } catch (InvalidConfigurationException | IOException e) {
             Bukkit.getLogger().log(Level.SEVERE, "Cannot load config.yml" , e);
         }

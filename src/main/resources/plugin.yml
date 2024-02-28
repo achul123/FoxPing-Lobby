@@ -6,8 +6,14 @@ commands:
   gm:
     description: alliase de gamemode
     permission: fp.gm
+  fly:
+    description: fly
+    permission: fp.fly
 
 permissions:
   gm:
     description: Allows you to use /gm
+    default: op
+  fly:
+    description: Allows you to use /fly
     default: op
